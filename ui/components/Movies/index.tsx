@@ -3,6 +3,7 @@
 import { useState } from 'react';
 
 import MovieCard from '@/ui/components/MovieCard';
+import Paginator from '@/ui/components/Paginator';
 import { Movie } from '@/utils/types/Movie';
 
 import styles from './Movies.module.css';
@@ -12,7 +13,7 @@ type Props = {
   total: number;
 };
 
-export default function Movies({ movies }: Props) {
+export default function Movies({ movies, total }: Props) {
   const [active, setActive] = useState<string | null>(null);
 
   const getClickHandler = (id: string) => () => {
@@ -35,6 +36,8 @@ export default function Movies({ movies }: Props) {
           />
         ))}
       </div>
+
+      {total > 10 && <Paginator total={total} />}
     </div>
   );
 }

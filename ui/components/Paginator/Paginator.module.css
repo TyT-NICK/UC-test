@@ -1,0 +1,31 @@
+.paginator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 0;
+  margin: 48px auto 0;
+  list-style: none;
+  border: 1px solid rgba(230, 234, 245, 1);
+  border-radius: 5px;
+  background: rgba(252, 252, 255, 1);
+  color: black;
+  width: min-content;
+}
+
+.paginator li {
+  width: 30px;
+  text-align: center;
+}
+
+.paginator li+li {
+  border-left: 1px solid rgba(230, 234, 245, 1);
+}
+
+.item {
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+.activeItem {
+  background: rgba(243, 245, 249, 1);
+}
