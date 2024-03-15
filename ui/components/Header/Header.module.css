@@ -14,5 +14,23 @@
 @media screen and (max-width: 1024px) {
   .wrapper {
     max-width: calc(100% - var(--mobile-padding));
+    flex-direction: column;
   }
+
+  .wrapper>* {
+    order: 1;
+  }
+
+  .wrapper>*:nth-child(2) {
+    order: 3;
+  }
+
+  .wrapper>*:last-child {
+    order: 2;
+  }
+
+  .wrapper>*+* {
+    margin-top: 15px;
+  }
+
 }
