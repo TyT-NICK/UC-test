@@ -20,7 +20,12 @@ export default function MovieCard({ movie, active, onClick }: Props) {
   return (
     <div className={classnames(styles.card, { [styles.active]: active })} onClick={onClick}>
       <div className={styles.imageWrapper}>
-        <Image src={poster || placeholderSrc} alt="default poster" fill />
+        <Image
+          src={poster || placeholderSrc}
+          alt="default poster"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        />
       </div>
 
       <p>Title: {title}</p>
