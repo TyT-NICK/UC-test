@@ -28,6 +28,10 @@ export const api = {
 
     const data = await res.json();
 
+    if (data.Response !== 'True') {
+      console.error('id', id);
+    }
+
     return { plot: data.Plot, rating: data.imdbRating };
   },
 };

@@ -1,0 +1,46 @@
+.card {
+  position: relative;
+  cursor: pointer;
+}
+
+.imageWrapper {
+  position: relative;
+  aspect-ratio: 300/450;
+}
+
+.card>p {
+  margin-top: 6px;
+}
+
+.additionalInfo {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 0;
+  width: 100%;
+  padding: 0 15px;
+  overflow: hidden;
+  background: rgba(var(--accent-rgb), 0.8);
+  backdrop-filter: blur(5px);
+  transition: all .3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.additionalInfo p {
+  color: white;
+  font-weight: 500;
+}
+
+.additionalInfo p:last-child {
+  margin-top: 16px;
+  font-weight: 700;
+}
+
+.card:hover .additionalInfo,
+.card.active .additionalInfo {
+  padding: 15px;
+  height: 100%;
+}

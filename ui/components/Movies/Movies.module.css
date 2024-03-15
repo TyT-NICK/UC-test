@@ -1,0 +1,32 @@
+.wrapper {
+  margin: 30px auto 0;
+}
+
+.list {
+  --gap: 32px;
+  --offset: -32px;
+
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin: var(--offset) 0 0 var(--offset);
+}
+
+.list>* {
+  margin: var(--gap) 0 0 var(--gap);
+}
+
+@media screen and (max-width: 1024px) {
+  .list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    max-width: 450px;
+  }
+
+  .list {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
