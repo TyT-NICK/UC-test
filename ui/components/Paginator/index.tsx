@@ -16,20 +16,20 @@ export default function Paginator({ total }: Props) {
 
   const totalPages = Math.ceil(total / 10);
   const currentSearch = searchParams.get(NAV_SEARCH_PARAMS.search)!;
+  const currentPage = Number.parseInt(searchParams.get(NAV_SEARCH_PARAMS.page)!) || 1;
 
   function handlePageChange({ selected }: { selected: number }) {
     const searchParams = new URLSearchParams();
     searchParams.set(NAV_SEARCH_PARAMS.search, currentSearch);
 
-    if (selected > 0) {
-      searchParams.set(NAV_SEARCH_PARAMS.page, (selected + 1).toString());
-    }
+    searchParams.set(NAV_SEARCH_PARAMS.page, (selected + 1).toString());
 
     navigateTo(`${pathname}?${searchParams.toString()}`);
   }
 
   return (
     <ReactPaginate
+      forcePage={currentPage - 1}
       pageCount={totalPages}
       breakLabel="..."
       pageRangeDisplayed={2}
