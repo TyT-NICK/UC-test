@@ -1,0 +1,15 @@
+.title {
+  text-align: center;
+  margin: 10% 0 25px;
+}
+
+.description {
+  text-align: center;
+}
+
+.secret {
+  text-align: right;
+  opacity: .5;
+  margin-top: 50px;
+  font-size: 0.7rem;
+}
