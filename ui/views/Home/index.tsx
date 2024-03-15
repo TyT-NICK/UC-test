@@ -1,15 +1,17 @@
 import Movies from '@/ui/components/Movies';
+import NoResult from '@/ui/components/NoResult';
 import SearchInfo from '@/ui/components/SearchInfo';
 import Welcoming from '@/ui/components/Welcoming';
-import { Movie } from '@/utils/types/Movie';
+import { getMovies } from '@/utils/data/getMovies';
 
 type Props = {
-  items?: Movie[];
-  total?: number;
+  page: number;
   search?: string;
 };
 
-export default function Home({ search, items = [], total = 0 }: Props) {
+export default async function Home({ search, page }: Props) {
+  const { items = [], total = 0 } = await getMovies({ page, search });
+
   const noResult = search && total === 0;
 
   return (
@@ -17,6 +19,8 @@ export default function Home({ search, items = [], total = 0 }: Props) {
       {search && <SearchInfo search={search} total={total} />}
 
       {!search && <Welcoming />}
+
+      {noResult && <NoResult />}
 
       {total > 0 && <Movies movies={items} total={total} />}
     </main>

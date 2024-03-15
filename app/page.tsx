@@ -1,11 +1,14 @@
+import { Suspense } from 'react';
+
 import Home from '@/ui/views/Home';
-import { getMovies } from '@/utils/data/getMovies';
 import { SearchParams } from '@/utils/types/SearchParams';
 
 export default async function Page({ searchParams }: { searchParams: SearchParams }) {
-  const { page = 0, search } = searchParams;
+  const { page = 0, search = '' } = searchParams;
 
-  const { items, total } = await getMovies({ page, search });
-
-  return <Home items={items} total={total} search={search} />;
+  return (
+    <Suspense fallback={<p>Loading content...</p>} key={JSON.stringify({ page, search })}>
+      <Home page={page} search={search} />
+    </Suspense>
+  );
 }
