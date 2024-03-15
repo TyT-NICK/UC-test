@@ -1,0 +1,9 @@
+.person {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.person span {
+  margin-left: 9px;
+}

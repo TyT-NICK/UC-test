@@ -1,6 +1,12 @@
 :root {
+  /* Colors */
   --background-rgb: 255, 255, 255;
   --foreground-rgb: 0, 0, 0;
+
+  /* Sizes */
+  --max-content-width: 1200px;
+
+  --mobile-padding: 32px;
 
   @media (prefers-color-scheme: dark) {
     --background-rgb: 27, 25, 51;
