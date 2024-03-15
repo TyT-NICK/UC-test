@@ -1,0 +1,14 @@
+.searchInfo {
+  font-size: 1.375rem;
+}
+
+.value {
+  text-decoration: underline;
+}
+
+.total {
+  font-size: 0.875rem;
+  padding: 5px 15px;
+  background-color: rgb(var(--accent-rgb));
+  margin-left: 17px;
+}

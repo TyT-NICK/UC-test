@@ -5,6 +5,8 @@ export default function iterateSearchResult(items: any[]): Movie[] {
     const newEntries = Object.entries(item).map(([field, value]) => {
       const newField = field[0].toLowerCase() + field.slice(1);
 
+      if (newField === 'poster') return [newField, null];
+
       return [newField, value];
     });
 

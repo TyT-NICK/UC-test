@@ -2,6 +2,7 @@
   /* Colors */
   --background-rgb: 255, 255, 255;
   --foreground-rgb: 0, 0, 0;
+  --accent-rgb: 102, 39, 255;
 
   /* Sizes */
   --max-content-width: 1200px;
@@ -31,6 +32,15 @@ body {
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main {
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: var(--max-content-width);
 }
 
 a {
@@ -41,5 +51,11 @@ a {
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  main {
+    max-width: calc(100% - var(--mobile-padding));
   }
 }
