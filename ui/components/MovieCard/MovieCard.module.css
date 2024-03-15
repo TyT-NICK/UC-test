@@ -6,6 +6,7 @@
 .imageWrapper {
   position: relative;
   aspect-ratio: 300/450;
+  width: 100%;
 }
 
 .card>p {
@@ -18,6 +19,8 @@
   transform: translateY(-50%);
   height: 0;
   width: 100%;
+  left: 0;
+  right: 0;
   padding: 0 15px;
   overflow: hidden;
   background: rgba(var(--accent-rgb), 0.8);

@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import { Movie } from '@/utils/types/Movie';
 
 import styles from './MovieCard.module.css';
+import { loadAdditionalData } from '@/utils/constants/additionalLoad';
 
 const placeholderSrc = 'https://imageplaceholder.net/300x450?text=Cool+Movie';
 
@@ -27,10 +28,12 @@ export default function MovieCard({ movie, active, onClick }: Props) {
       <p>imdbID: {imdbID}</p>
       <p>Type: {type}</p>
 
-      <div className={styles.additionalInfo}>
-        <p>{plot}</p>
-        <p>{rating === 'N/A' ? '??' : rating} / 10</p>
-      </div>
+      {loadAdditionalData && (
+        <div className={styles.additionalInfo}>
+          <p>{plot}</p>
+          <p>{rating === 'N/A' ? '??' : rating} / 10</p>
+        </div>
+      )}
     </div>
   );
 }

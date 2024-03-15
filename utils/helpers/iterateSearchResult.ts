@@ -1,5 +1,6 @@
 import { Movie } from '@/utils/types/Movie';
 import { api } from '../api';
+import { loadAdditionalData } from '../constants/additionalLoad';
 
 export default async function iterateSearchResult(items: any[]): Promise<Movie[]> {
   const movies: Movie[] = [];
@@ -20,9 +21,11 @@ export default async function iterateSearchResult(items: any[]): Promise<Movie[]
       return [newField, value];
     });
 
-    const additional = await api.getAdditionalData({ id });
+    if (loadAdditionalData) {
+      const additional = await api.getAdditionalData({ id });
 
-    newEntries.push(...Object.entries(additional));
+      newEntries.push(...Object.entries(additional));
+    }
 
     movies.push(Object.fromEntries(newEntries));
   }
