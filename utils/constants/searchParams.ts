@@ -1,6 +1,7 @@
 export const MOVIE_SEARCH_PARAMS = {
   search: 's',
   page: 'page',
+  id: 'i',
   apiKey: 'apiKey',
 };
 
