@@ -2,7 +2,7 @@
 
 import { ChangeEvent, useState, KeyboardEvent } from 'react';
 import Image from 'next/image';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import { NAV_SEARCH_PARAMS } from '@/utils/constants/searchParams';
 
@@ -11,9 +11,11 @@ import search from '~/icons/search.svg';
 import styles from './SearchBar.module.css';
 
 export default function SearchBar() {
-  const [value, setValue] = useState('');
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const { push: navigateTo } = useRouter();
+
+  const [value, setValue] = useState(searchParams.get('search') || '');
 
   function handleSearch() {
     if (!value) {
