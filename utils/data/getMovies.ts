@@ -1,17 +1,30 @@
 import { SearchParams } from '../types/SearchParams';
+import { MOVIE_SEARCH_PARAMS } from '../constants/searchParams';
+import iterateSearchResult from '../helpers/iterateSearchResult';
+import { Movie } from '@/utils/types/Movie';
 
 const apiUrl = process.env.API_URL!;
 const apiKey = process.env.API_KEY!;
 
-export async function getMovies({ search, page = 0 }: SearchParams) {
-  if (!search) return;
+type ReturnType = {
+  items?: Movie[];
+  total?: number;
+  error?: any;
+};
+
+export async function getMovies({ search, page = 0 }: SearchParams): Promise<ReturnType> {
+  if (!search) {
+    return {
+      error: new Error('No argument provided'),
+    };
+  }
 
   const searchParams = new URLSearchParams();
-  searchParams.set('apiKey', apiKey);
-  searchParams.set('s', search);
+  searchParams.set(MOVIE_SEARCH_PARAMS.apiKey, apiKey);
+  searchParams.set(MOVIE_SEARCH_PARAMS.search, search);
 
   if (page !== 0) {
-    searchParams.set('page', page.toString());
+    searchParams.set(MOVIE_SEARCH_PARAMS.page, page.toString());
   }
 
   try {
@@ -23,10 +36,14 @@ export async function getMovies({ search, page = 0 }: SearchParams) {
     }
 
     return {
-      items: data.Search,
-      total: data.totalResults,
+      items: iterateSearchResult(data.Search),
+      total: Number.parseInt(data.totalResults),
     };
-  } catch (e) {
+  } catch (e: any) {
     console.error(e);
+
+    return {
+      error: e,
+    };
   }
 }
