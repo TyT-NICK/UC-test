@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 
 import MovieCard from '@/ui/components/MovieCard';
 import Paginator from '@/ui/components/Paginator';
@@ -37,7 +37,11 @@ export default function Movies({ movies, total }: Props) {
         ))}
       </div>
 
-      {total > 10 && <Paginator total={total} />}
+      {total > 10 && (
+        <Suspense>
+          <Paginator total={total} />
+        </Suspense>
+      )}
     </div>
   );
 }

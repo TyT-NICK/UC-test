@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import Image from 'next/image';
 
 import SearchBar from '@/ui/components/SearchBar';
@@ -13,7 +14,9 @@ export default function Header() {
       <div className={styles.wrapper}>
         <Image src={logo} alt="logo" />
 
-        <SearchBar />
+        <Suspense>
+          <SearchBar />
+        </Suspense>
 
         <Person />
       </div>
